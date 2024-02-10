@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import SignUpPageUI from "./ui/sign-in";
+import SignUpPageUI from "./ui/sign-up";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 const SignUpPage = () => {
