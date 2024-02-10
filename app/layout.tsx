@@ -7,6 +7,8 @@ import Providers from "@/components/Providers";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import ThemeProvider from "@/context/ThemeCtx";
+import SkeletonNavbar from "@/components/skeleton/SkeletonNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,14 +25,19 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="h-full">
 			<body
-				className={cn("relative h-full font-sans antialiased", inter.className)}
+				className={cn(
+					"relative h-full font-sans antialiased transition-colors duration-500 bg-white dark:bg-gray-950",
+					inter.className
+				)}
 			>
 				<main className="relative flex flex-col min-h-screen">
 					<Providers>
-						<Suspense fallback={<LoadingSpinner />}>
-							<Navbar />
+						<ThemeProvider>
+							<Suspense fallback={<SkeletonNavbar />}>
+								<Navbar />
+							</Suspense>
 							<div className="flex-grow flex-1">{children}</div>
-						</Suspense>
+						</ThemeProvider>
 					</Providers>
 				</main>
 

@@ -8,16 +8,17 @@ import Cart from "./Cart";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { cookies } from "next/headers";
 import UserAccountNav from "./UserAccountNav";
+import ThemeButtons from "./miscellaneous/ThemeButtons";
 
 const Navbar = async () => {
 	const nextCookies = cookies();
 	const { user } = await getServerSideUser(nextCookies);
 
 	return (
-		<nav className="bg-white sticky z-50 top-0 inset-x-0 h-16">
-			<header className="relative bg-white">
+		<nav className="bg-white dark:bg-gray-900/60 dark:backdrop-blur-xl sticky z-50 top-0 inset-x-0 h-16">
+			<header className="relative bg-white dark:bg-gray-900/0">
 				<MaxWidthWrapper>
-					<div className="border-b border-gray-200">
+					<div className="border-b border-gray-200 dark:border-blue-600">
 						<div className="flex h-16 items-center">
 							<div className="ml-4 flex lg:ml-0">
 								<Link href="/">
@@ -40,7 +41,10 @@ const Navbar = async () => {
 									)}
 
 									{user ? null : (
-										<span className="h-6 w-px bg-gray-200" aria-hidden />
+										<span
+											className="h-6 w-px bg-gray-200 dark:bg-blue-600"
+											aria-hidden
+										/>
 									)}
 
 									{user ? (
@@ -55,17 +59,26 @@ const Navbar = async () => {
 									)}
 
 									{user ? (
-										<span className="h-6 w-px bg-gray-200" aria-hidden />
+										<span
+											className="h-6 w-px bg-gray-200 dark:bg-blue-600"
+											aria-hidden
+										/>
 									) : null}
 
 									{user ? null : (
 										<div className="flex lg:ml-6" aria-hidden>
-											<span className="h-6 w-px bg-gray-200" aria-hidden />
+											<span
+												className="h-6 w-px bg-gray-200 dark:bg-blue-600"
+												aria-hidden
+											/>
 										</div>
 									)}
 
-									<div className="ml flow-root lg:ml-6">
-										<Cart />
+									<div className="ml flow-root lg:ml-6 ">
+										<span className=" w-full flex items-center justify-center gap-x-2">
+											<Cart />
+											<ThemeButtons />
+										</span>
 									</div>
 								</div>
 							</div>

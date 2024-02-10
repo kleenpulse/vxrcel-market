@@ -9,12 +9,10 @@ dotenv.config({
 });
 
 const transporter = nodemailer.createTransport({
-	host: "smtp.resend.com",
-	secure: true,
-	port: 465,
+	service: "gmail",
 	auth: {
-		user: "resend",
-		pass: process.env.RESEND_API_KEY,
+		user: process.env.NODEMAILER_EMAIL,
+		pass: process.env.NODEMAILER_PW,
 	},
 });
 
@@ -46,7 +44,7 @@ export const getPayloadClient = async ({
 		cached.promise = payload.init({
 			email: {
 				transport: transporter,
-				fromAddress: "hello@heptagonindustries.ng",
+				fromAddress: process.env.NODEMAILER_EMAIL!,
 				fromName: "Vxrcel Digital Marketing",
 			},
 			secret: process.env.PAYLOAD_SECRET,

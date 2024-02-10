@@ -24,17 +24,24 @@ const UserAccountNav = ({ user }: { user: User }) => {
 				</Button>
 			</DropdownMenuTrigger>
 
-			<DropdownMenuContent className="bg-white w-60" align="end">
+			<DropdownMenuContent
+				className="bg-white dark:bg-gray-950/70 backdrop-blur-xl dark:border dark:border-blue-600 w-60"
+				align="end"
+			>
 				<div className="flex items-center justify-start gap-2 p-2">
 					<div className="flex flex-col space-y-0.5 leading-none">
-						<p className="font-medium text-sm text-black">{user.email}</p>
+						<p className="font-medium text-sm text-black dark:text-gray-50">
+							{user.email}
+						</p>
 					</div>
 				</div>
 
 				<DropdownMenuSeparator />
 
 				<DropdownMenuItem asChild>
-					<Link href="/sell">Seller Dashboard</Link>
+					<Link href="/sell" className="cursor-pointer">
+						Seller Dashboard
+					</Link>
 				</DropdownMenuItem>
 
 				<DropdownMenuItem className="cursor-pointer" onClick={signOut}>

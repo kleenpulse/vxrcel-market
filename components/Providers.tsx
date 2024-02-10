@@ -3,6 +3,7 @@
 import React, { PropsWithChildren, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { trpc } from "@/lib/trpc/client";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { httpBatchLink } from "@trpc/client";
 
 const Providers = ({ children }: PropsWithChildren) => {
@@ -22,7 +23,15 @@ const Providers = ({ children }: PropsWithChildren) => {
 
 	return (
 		<trpc.Provider client={trpcClient} queryClient={queryClient}>
-			<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+			<QueryClientProvider client={queryClient}>
+				<ProgressBar
+					height="4px"
+					color="#0ff"
+					options={{ showSpinner: false }}
+					shallowRouting
+				/>
+				{children}
+			</QueryClientProvider>
 		</trpc.Provider>
 	);
 };

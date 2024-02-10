@@ -43,11 +43,11 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
 					)}
 				>
 					<div
-						className="absolute inset-0 top-1/2 bg-white shadow"
+						className="absolute inset-0 top-1/2 bg-white dark:bg-gray-950/20 dark:backdrop-blur-xl shadow"
 						aria-hidden
 					/>
 
-					<div className="relative bg-white">
+					<div className="relative bg-white dark:bg-gray-950/70 dark:backdrop-blur-xl">
 						<div className="mx-auto max-w-7xl px-8">
 							<div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
 								<div className="col-span-4 col-start-1 grid grid-cols-3 gap-x-8">
@@ -56,7 +56,7 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
 											key={item.name}
 											className="group relative text-base sm:text-sm"
 										>
-											<div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-70">
+											<div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-blue-900 group-hover:opacity-70">
 												<Image
 													src={item.imageSrc}
 													alt={item.name}
@@ -67,7 +67,7 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
 
 											<Link
 												href={item.href}
-												className="mt-6 block font-medium text-gray-900"
+												className="mt-6 block font-medium text-gray-900 dark:text-gray-50"
 											>
 												{item.name}
 											</Link>
