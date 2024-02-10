@@ -36,7 +36,9 @@ export default function RootLayout({
 							<Suspense fallback={<SkeletonNavbar />}>
 								<Navbar />
 							</Suspense>
-							<div className="flex-grow flex-1">{children}</div>
+							<Suspense fallback={<LoadingSpinner />}>
+								<div className="flex-grow flex-1">{children}</div>
+							</Suspense>
 						</ThemeProvider>
 					</Providers>
 				</main>
