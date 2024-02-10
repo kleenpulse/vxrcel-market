@@ -30,17 +30,19 @@ export default function RootLayout({
 					inter.className
 				)}
 			>
-				<main className="relative flex flex-col min-h-screen">
-					<Providers>
-						<ThemeProvider>
-							<Suspense fallback={<SkeletonNavbar />}>
-								<Navbar />
-							</Suspense>
+				<Suspense fallback={<LoadingSpinner />}>
+					<main className="relative flex flex-col min-h-screen">
+						<Providers>
+							<ThemeProvider>
+								<Suspense fallback={<SkeletonNavbar />}>
+									<Navbar />
+								</Suspense>
 
-							<div className="flex-grow flex-1">{children}</div>
-						</ThemeProvider>
-					</Providers>
-				</main>
+								<div className="flex-grow flex-1">{children}</div>
+							</ThemeProvider>
+						</Providers>
+					</main>
+				</Suspense>
 
 				<Toaster position="top-center" richColors closeButton />
 			</body>
