@@ -4,6 +4,7 @@
 
 :root {
 	--primary-blue: rgb(37, 99, 235);
+	--bezier-bounce: 0.1, 0.885, 0.32, 1.575;
 }
 
 @layer base {
@@ -61,8 +62,12 @@
 		@apply bg-background text-foreground;
 	}
 }
-
-div[data-auth]::after {
+div[data-auth],
+div[data-cart] {
+	overflow: hidden;
+}
+div[data-auth]::after,
+div[data-cart]::after {
 	content: "";
 	position: fixed;
 	top: 0;
@@ -79,9 +84,55 @@ div[data-auth]::after {
 		#d9ebfb 100%
 	);
 }
+div[data-cart]::after {
+	position: absolute;
+	top: -10%;
+	right: -10%;
+	background: radial-gradient(circle, rgb(209, 228, 251) 10%, #d9ebfb 100%);
+}
+.dark div[data-cart]::after {
+	background: radial-gradient(circle, rgb(2, 90, 162) 20%, #350aa9 100%);
+}
+div[data-auth]::before {
+	content: "";
+	position: fixed;
+	bottom: -10%;
+	left: -10%;
+	height: 500px;
+	width: 500px;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: -1;
+	filter: blur(150px);
+	background: radial-gradient(circle, rgb(201, 252, 204) 10%, #d9ebfb 100%);
+}
 
+.dark div[data-auth]::before {
+	background: radial-gradient(circle, rgb(1, 50, 141) 20%, #350aa9 100%);
+}
 .dark div[data-auth]::after {
 	background: radial-gradient(circle, rgb(3, 142, 255) 20%, #350aa9 100%);
+}
+
+.product-image {
+	transition: transform 0.4s cubic-bezier(var(--bezier-bounce));
+	transform-origin: center;
+	filter: saturate(1.1);
+}
+.product-image:hover {
+	transform: scale(1.2);
+	transition: transform 0.3s ease-in-out;
+}
+
+.swiper-pagination-bullet {
+	height: 7px !important;
+	width: 7px !important;
+	background: rgba(255, 255, 255, 0.572) !important;
+	scale: 0.9 !important;
+}
+.swiper-pagination-bullet-active {
+	background: #ffffff !important;
+	scale: 1 !important;
 }
 
 ::-webkit-scrollbar {
@@ -93,6 +144,9 @@ div[data-auth]::after {
 	background: transparent;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+	background: rgb(0, 136, 255);
+}
 ::-webkit-scrollbar-thumb {
 	background: var(--primary-blue);
 }

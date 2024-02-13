@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
 	Sheet,
@@ -12,9 +14,18 @@ import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Image from "next/image";
+import { useCart } from "@/hooks/use-cart";
+import CartItem from "./CartItem";
+import { ScrollArea } from "./ui/scroll-area";
 
 const Cart = () => {
-	const itemCount = 0;
+	const { items } = useCart();
+	const itemCount = items.length;
+
+	const cartTotal = items.reduce(
+		(total, { product }) => total + product.price,
+		0
+	);
 	const fee = 1;
 
 	return (
@@ -22,21 +33,30 @@ const Cart = () => {
 			<SheetTrigger className="group -m-2 flex items-center p-2 focus:outline-blue-400">
 				<ShoppingCart
 					aria-hidden
-					className="h-6 w-6 flex-shrink-0 text-gray-400  group-hover:text-gray-500"
+					className="h-6 w-6 flex-shrink-0 text-gray-400  group-hover:text-gray-500 dark:group-hover:text-blue-600"
 				/>
-				<span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800 dark:text-gray-400">
-					0
+				<span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-blue-500">
+					{itemCount}
 				</span>
 			</SheetTrigger>
 
-			<SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
-				<SheetHeader>Cart (0)</SheetHeader>
+			<SheetContent
+				data-cart
+				className="flex w-full flex-col pr-0 sm:max-w-lg "
+			>
+				<SheetHeader>Cart ({itemCount})</SheetHeader>
 
 				{itemCount > 0 ? (
 					<>
-						<div className="flex w-full flex-col pr-6">cart items</div>
+						<ScrollArea>
+							<div className="flex w-full flex-col pr-6">
+								{items.map(({ product }) => (
+									<CartItem key={product.id} product={product} />
+								))}
+							</div>
+						</ScrollArea>
 						<div className="space-y-4 pr-6">
-							<Separator />
+							<Separator className="dark:bg-blue-500" />
 							<div className="space-y-1.5 text-sm">
 								<div className="flex">
 									<span className="flex-1 ">Shipping</span>
@@ -50,7 +70,7 @@ const Cart = () => {
 
 								<div className="flex">
 									<span className="flex-1 ">Total</span>
-									<span>{formatPrice(fee)}</span>
+									<span>{formatPrice(cartTotal + fee)}</span>
 								</div>
 							</div>
 

@@ -25,7 +25,7 @@ export default async function auth(req: NextRequest) {
 		return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
 	}
 
-	if (!isLoggedIn && isAuthRoute) return null;
+	if (!isLoggedIn && (isAuthRoute || isPublicRoute)) return null;
 
 	if (!isLoggedIn && !isPublicRoute) {
 		return Response.redirect(new URL("/sign-in", nextUrl));

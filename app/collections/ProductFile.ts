@@ -64,11 +64,6 @@ export const ProductFiles: CollectionConfig = {
 	admin: {
 		hidden: ({ user }) => user.role !== "admin",
 	},
-	upload: {
-		staticURL: "/product_files",
-		staticDir: "product_files",
-		mimeTypes: ["image/*", "font/*", "application/postscript"],
-	},
 	hooks: {
 		beforeChange: [addUser],
 	},
@@ -76,6 +71,11 @@ export const ProductFiles: CollectionConfig = {
 		read: yourOwnAndPurchased,
 		update: ({ req }) => req.user.role === "admin",
 		delete: ({ req }) => req.user.role === "admin",
+	},
+	upload: {
+		staticURL: "/product_files",
+		staticDir: "product_files",
+		mimeTypes: ["image/*", "font/*", "application/postscript"],
 	},
 	fields: [
 		{
