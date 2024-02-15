@@ -6,14 +6,13 @@ import {
 	publicRoutes,
 } from "./routes";
 import { getServerSideUser } from "./lib/payload-utils";
-import { cookies } from "next/headers";
 
 export default async function auth(req: NextRequest) {
-	const nextCookies = cookies();
-	const { user } = await getServerSideUser(nextCookies);
+	const { nextUrl, cookies } = req;
+
+	const { user } = await getServerSideUser(cookies);
 	const isLoggedIn = !!user;
 	console.log("IS LOGGED IN:", isLoggedIn);
-	const { nextUrl } = req;
 	const { pathname } = nextUrl;
 	const isAuthRoute = authRoutes.includes(pathname);
 	const isApiRoute = pathname.startsWith(apiAuthPrefix);
