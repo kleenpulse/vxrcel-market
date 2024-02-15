@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductSkeleton from "./skeleton/ProductSkeleton";
 import Link from "next/link";
 import { cn, formatPrice } from "@/lib/utils";
-import { PRODUCT_CATEGORIES } from "./config";
+import { PRODUCT_CATEGORIES } from "../config";
 import ImageSlider from "./ImageSlider";
 
 interface Props {

@@ -1,6 +1,6 @@
 "use client";
 
-import { PRODUCT_CATEGORIES } from "@/components/config";
+import { PRODUCT_CATEGORIES } from "@/config";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { trpc } from "@/lib/trpc/client";

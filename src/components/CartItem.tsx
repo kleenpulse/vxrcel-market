@@ -2,7 +2,7 @@ import { Product } from "@/payload-types";
 import { ImageIcon, X } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { PRODUCT_CATEGORIES } from "./config";
+import { PRODUCT_CATEGORIES } from "../config";
 import { useCart } from "@/hooks/use-cart";
 import { Button } from "./ui/button";
 import { formatPrice } from "@/lib/utils";

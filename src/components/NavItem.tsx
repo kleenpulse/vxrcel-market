@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { PRODUCT_CATEGORIES } from "./config";
+import { PRODUCT_CATEGORIES } from "../config";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";

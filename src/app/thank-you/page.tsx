@@ -1,6 +1,6 @@
 import PaymentStatus from "@/components/PaymentStatus";
 import ProductListing from "@/components/ProductListing";
-import { PRODUCT_CATEGORIES } from "@/components/config";
+import { PRODUCT_CATEGORIES } from "@/config";
 import { getPayloadClient } from "@/get-payload";
 import { getServerSideUser } from "@/lib/payload-utils";
 import { formatPrice } from "@/lib/utils";
