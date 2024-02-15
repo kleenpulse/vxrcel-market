@@ -13,7 +13,8 @@ const nextConfig = {
         pathname: "**",
         protocol: 'https'
       }
-    ]
+    ],
+    domains: ['vxrcel-market.up.railway.app', 'localhost']
   }
 }
 
