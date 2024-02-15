@@ -3,12 +3,12 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
-import { Users } from "../app/collections/Users";
+import { Users } from "./app/collections/Users";
 import dotenv from "dotenv";
-import { Products } from "../app/collections/Products";
-import { Media } from "../app/collections/Media";
-import { ProductFiles } from "../app/collections/ProductFile";
-import { Orders } from "../app/collections/Orders";
+import { Products } from "./app/collections/Products";
+import { Media } from "./app/collections/Media";
+import { ProductFiles } from "./app/collections/ProductFile";
+import { Orders } from "./app/collections/Orders";
 
 dotenv.config({
 	path: path.resolve(__dirname, "../.env"),
