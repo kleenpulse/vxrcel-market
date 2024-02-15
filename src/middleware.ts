@@ -7,7 +7,7 @@ import {
 } from "./routes";
 import { getServerSideUser } from "./lib/payload-utils";
 
-export default async function auth(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
 	const { nextUrl, cookies } = req;
 
 	const { user } = await getServerSideUser(cookies);

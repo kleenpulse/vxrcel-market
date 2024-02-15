@@ -7,6 +7,11 @@ const nextConfig = {
         pathname: "**",
         port: '3000',
         protocol: 'http'
+      },
+      {
+        hostname: 'https://vxrcel-market.up.railway.app',
+        pathname: "**",
+        protocol: 'https'
       }
     ]
   }
